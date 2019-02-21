@@ -43,9 +43,9 @@ public:
             if (idx+1 == word.size()) return true;
             idx++;
             // recursion cases: check if adjacent cells contain the character
-            if ((i+1<board.size()    && backtrack(board, word, usage, i+1, j, idx)) ||
+            if ((i+1<board.size()     && backtrack(board, word, usage, i+1, j, idx)) ||
                 (i-1>=0               && backtrack(board, word, usage, i-1, j, idx)) ||
-                (j+1<board[i].size() && backtrack(board, word, usage, i, j+1, idx)) ||
+                (j+1<board[i].size()  && backtrack(board, word, usage, i, j+1, idx)) ||
                 (j-1>=0               && backtrack(board, word, usage, i, j-1, idx)) ){
                 return true;
             }
