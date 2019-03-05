@@ -51,19 +51,58 @@
  * 
  */
 class Vector2D {
+    // iterator solution
+private:
+    vector<vector<int>> data;
+    vector<vector<int>>::iterator i, end;
+    int colPos = 0;
 public:
     Vector2D(vector<vector<int>> v) {
-        
+        data = v;
+        i = data.begin();
+        end = data.end();
     }
     
     int next() {
-        
+        hasNext();
+        return (*i)[colPos++];
     }
     
     bool hasNext() {
-        
+        // while hasn't finished iterating the entire 2D vector but have finished iterating one row
+        while(i != end && colPos == (*i).size()){
+            // move to the next row
+            i++;
+            // reset column position to 0
+            colPos = 0;
+        }
+        return i != end;
     }
 };
+
+// // Naive 2D to 1D solution:
+// class Vector2D {
+//     queue<int> q;
+
+// public:
+//     Vector2D(vector<vector<int>> v) {
+//         for (vector<int> vec : v){
+//             for (int i : vec){
+//                 q.push(i);
+//             }
+//         }
+//     }
+    
+//     int next() {
+//         int nextNum = q.front();
+//         q.pop();
+//         return nextNum;
+//     }
+    
+//     bool hasNext() {
+//         return !q.empty();
+//     }
+// };
 
 /**
  * Your Vector2D object will be instantiated and called as such:
